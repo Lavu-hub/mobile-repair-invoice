@@ -1,10 +1,7 @@
-import Home from './Home.jsx';
+import Layout from "./Layout";
+
 function App() {
-  return (
-    <div>
-     <Home/>
-    </div>
-  )
+  return <Layout />;
 }
 
-export default App
+export default App;
