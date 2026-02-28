@@ -182,7 +182,15 @@ className="outline-none w-full bg-transparent"
 <input
 placeholder="Phone Number"
 value={phone}
-onChange={(e)=>setPhone(e.target.value)}
+maxLength={10}
+onChange={(e)=>
+{
+  const value = e.target.value.replace(/\D/g,"")
+  if(value.length <= 10){
+    setPhone(value)
+}
+}}
+ 
 className="outline-none w-full bg-transparent"
 />
 
