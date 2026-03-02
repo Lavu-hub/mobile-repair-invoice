@@ -1,112 +1,83 @@
+import { useState } from "react";
 function JobCards() {
+  const [phoneName, setPhoneName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [estimateBill, setEstimateBill] = useState("");
+  const [issue, setIssue] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    alert("Job Card Created Successfully ✅");
+
+    // Clear form
+    setPhoneName("");
+    setCompanyName("");
+    setEstimateBill("");
+    setIssue("");
+  };
+
   return (
+    <div className="min-h-screen bg-gray-50 flex justify-center items-center p-6">
+      <div className="w-full max-w-xl bg-white shadow-xl rounded-2xl p-8">
 
-    <div>
+        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+          New Job Card
+        </h1>
 
-      {/* Title */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
-      <h1 className="text-2xl md:text-3xl font-bold mb-6">
-        Job Cards
-      </h1>
+          {/* Phone Name */}
+          <input
+            type="text"
+            placeholder="Phone Name"
+            value={phoneName}
+            onChange={(e) => setPhoneName(e.target.value)}
+            className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            required
+          />
 
+          {/* Company Name */}
+          <input
+            type="text"
+            placeholder="Company Name (Apple, Samsung, etc.)"
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
+            className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            required
+          />
 
-      {/* Table Card */}
+          {/* Estimate Bill */}
+          <input
+            type="number"
+            placeholder="Estimate Bill ₹"
+            value={estimateBill}
+            onChange={(e) => setEstimateBill(e.target.value)}
+            className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            required
+          />
 
-      <div className="bg-white p-4 md:p-6 rounded shadow">
+          {/* Issue Description */}
+          <textarea
+            placeholder="Issue Description"
+            value={issue}
+            onChange={(e) => setIssue(e.target.value)}
+            className="border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            rows="3"
+          ></textarea>
 
-
-        {/* Scrollable Table (Mobile Friendly) */}
-
-        <div className="overflow-x-auto">
-
-
-          <table className="min-w-full border text-sm md:text-base">
-
-            <thead>
-
-              <tr className="bg-gray-200 text-left">
-
-                <th className="p-3 border whitespace-nowrap">
-                  Customer
-                </th>
-
-                <th className="p-3 border whitespace-nowrap">
-                  Phone
-                </th>
-
-                <th className="p-3 border whitespace-nowrap">
-                  Problem
-                </th>
-
-                <th className="p-3 border whitespace-nowrap">
-                  Status
-                </th>
-
-              </tr>
-
-            </thead>
-
-
-            <tbody>
-
-
-              <tr className="hover:bg-gray-50">
-
-                <td className="p-3 border whitespace-nowrap">
-                  Rahul
-                </td>
-
-                <td className="p-3 border whitespace-nowrap">
-                  Samsung A51
-                </td>
-
-                <td className="p-3 border whitespace-nowrap">
-                  Display
-                </td>
-
-                <td className="p-3 border whitespace-nowrap text-orange-500 font-semibold">
-                  Pending
-                </td>
-
-              </tr>
-
-
-
-              <tr className="hover:bg-gray-50">
-
-                <td className="p-3 border whitespace-nowrap">
-                  Amit
-                </td>
-
-                <td className="p-3 border whitespace-nowrap">
-                  iPhone 11
-                </td>
-
-                <td className="p-3 border whitespace-nowrap">
-                  Battery
-                </td>
-
-                <td className="p-3 border whitespace-nowrap text-green-500 font-semibold">
-                  Done
-                </td>
-
-              </tr>
-
-
-            </tbody>
-
-          </table>
-
-
-        </div>
-
-
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-400 transition duration-300 font-semibold"
+          >
+            Create Job Card
+          </button>
+        </form>
       </div>
-
-
     </div>
-
   );
+
 }
 
 export default JobCards;
