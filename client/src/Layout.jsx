@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 
 import Dashboard from "./pages/Dashboard";
 import JobCards from "./pages/JobCards";
-import Mechanics from "./pages/Mechanics";
+import Users from "./pages/Users";
 import Invoices from "./pages/Invoices";
 import Settings from "./pages/Settings";
 
@@ -38,15 +38,18 @@ function Layout() {
 
             <Routes>
 
-              <Route path="/" element={<Dashboard />} />
+              {/* Default Redirect */}
+              <Route path="/" element={<Navigate to="/dashboard" />} />
 
-              <Route path="/jobcards" element={<JobCards />} />
+              <Route path="/dashboard" element={<Dashboard />} />
 
-              <Route path="/mechanics" element={<Mechanics />} />
+              <Route path="/dashboard/job-cards" element={<JobCards />} />
 
-              <Route path="/invoices" element={<Invoices />} />
+              <Route path="/dashboard/users" element={<Users />} />
 
-              <Route path="/settings" element={<Settings />} />
+              <Route path="/dashboard/invoices" element={<Invoices />} />
+
+              <Route path="/dashboard/settings" element={<Settings />} />
 
             </Routes>
 

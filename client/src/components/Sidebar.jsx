@@ -18,8 +18,8 @@ function Sidebar() {
 
   const activeLink = (path) =>
     location.pathname === path
-      ? "bg-white text-black shadow-md"
-      : "hover:bg-gray-700";
+      ? "bg-white text-black shadow-md border-l-4 border-orange-500"
+      : "text-gray-300 hover:text-white hover:bg-white/10 hover:pl-5 hover:border-l-4 hover:border-orange-400 transition-all duration-300";
 
 
   return (
@@ -37,7 +37,6 @@ function Sidebar() {
           MobileCare
         </h2>
 
-
         <button
           onClick={() => setOpen(!open)}
           className="text-2xl"
@@ -46,7 +45,6 @@ function Sidebar() {
         </button>
 
       </div>
-
 
 
       {/* Sidebar */}
@@ -74,14 +72,12 @@ function Sidebar() {
         {/* Close Mobile */}
 
         <div className="md:hidden flex justify-end mb-4">
-
           <button
             onClick={() => setOpen(false)}
             className="text-2xl"
           >
             ✕
           </button>
-
         </div>
 
 
@@ -89,11 +85,8 @@ function Sidebar() {
         {/* Logo */}
 
         <h2 className="text-2xl font-bold mb-10 tracking-wide flex items-center gap-2">
-
           <FaMobileAlt size={22} />
-
           MobileCare
-
         </h2>
 
 
@@ -106,8 +99,8 @@ function Sidebar() {
           <li>
 
             <Link
-              to="/"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/")}`}
+              to="/dashboard"
+              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard")}`}
               onClick={() => setOpen(false)}
             >
               <FaTachometerAlt size={18} />
@@ -121,8 +114,8 @@ function Sidebar() {
           <li>
 
             <Link
-              to="/jobcards"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/jobcards")}`}
+              to="/dashboard/job-cards"
+              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/job-cards")}`}
               onClick={() => setOpen(false)}
             >
               <FaClipboardList size={18} />
@@ -136,12 +129,12 @@ function Sidebar() {
           <li>
 
             <Link
-              to="/mechanics"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/mechanics")}`}
+              to="/dashboard/users"
+              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/users")}`}
               onClick={() => setOpen(false)}
             >
               <FaUsers size={18} />
-              Mechanics
+              Users
             </Link>
 
           </li>
@@ -151,8 +144,8 @@ function Sidebar() {
           <li>
 
             <Link
-              to="/invoices"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/invoices")}`}
+              to="/dashboard/invoices"
+              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/invoices")}`}
               onClick={() => setOpen(false)}
             >
               <FaFileInvoice size={18} />
@@ -166,8 +159,8 @@ function Sidebar() {
           <li>
 
             <Link
-              to="/settings"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/settings")}`}
+              to="/dashboard/settings"
+              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/settings")}`}
               onClick={() => setOpen(false)}
             >
               <FaCog size={18} />
@@ -184,9 +177,7 @@ function Sidebar() {
         {/* Bottom */}
 
         <div className="text-sm opacity-60">
-
           © 2026 MobileCare
-
         </div>
 
 
