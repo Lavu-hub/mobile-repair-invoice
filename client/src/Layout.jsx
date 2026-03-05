@@ -9,6 +9,8 @@ import JobCards from "./pages/JobCards";
 import Users from "./pages/Users";
 import Invoices from "./pages/Invoices";
 import Settings from "./pages/Settings";
+import Mobileparts from "./pages/Mobileparts";
+import AddPhones from "./pages/AddPhones";
 
 function Layout() {
 
@@ -44,10 +46,14 @@ function Layout() {
               <Route path="/dashboard" element={<Dashboard />} />
 
               <Route path="/dashboard/job-cards" element={<JobCards />} />
+              <Route path="/dashboard/addphones" element={<AddPhones />} />
 
               <Route path="/dashboard/users" element={<Users />} />
 
               <Route path="/dashboard/invoices" element={<Invoices />} />
+
+              
+              <Route path="/dashboard/mobileparts" element={<Mobileparts />} />
 
               <Route path="/dashboard/settings" element={<Settings />} />
 

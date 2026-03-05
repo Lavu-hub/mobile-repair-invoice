@@ -1,117 +1,123 @@
-function JobCards() {
+import { useState } from "react";
+import axios from "axios";
+import { FaMobileAlt, FaTag, FaPlus } from "react-icons/fa";
+
+function AddPhones() {
+
+  const [type, setType] = useState("");
+  const [brand, setBrand] = useState("");
+  const [model, setModel] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+
+      const phoneData = {
+        type,
+        brand,
+        model
+      };
+
+      const res = await axios.post("/api/phones/add", phoneData);
+
+      alert("Phone Added Successfully ✅");
+
+      // reset form
+      setType("");
+      setBrand("");
+      setModel("");
+
+      console.log(res.data);
+
+    } catch (error) {
+
+      console.log(error);
+      alert("Error adding phone ❌");
+
+    }
+  };
 
   return (
 
-    <div>
+    <div className="p-6">
 
-      <h1 className="text-2xl md:text-3xl font-bold mb-6">
-        Job Cards
-      </h1>
+      <div className="bg-white p-6 rounded-2xl shadow border max-w-3xl">
 
+        <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <FaMobileAlt />
+          Add Phone
+        </h1>
 
-      {/* Add Job Form */}
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-      <div className="bg-white p-4 md:p-6 rounded shadow mb-8">
+          {/* Phone Type */}
+          <div className="md:col-span-2">
+            <label className="text-sm font-semibold text-gray-600 mb-2 block">
+              Phone Type
+            </label>
 
-        <h2 className="text-xl font-bold mb-4">
-          Create Job Card
-        </h2>
+            <select
+              value={type}
+              onChange={(e)=>setType(e.target.value)}
+              required
+              className="w-full border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-300"
+            >
+              <option value="">Select Type</option>
+              <option value="Android">Android</option>
+              <option value="iPhone">iPhone</option>
+            </select>
 
-        <div className="grid md:grid-cols-2 gap-4">
+          </div>
 
-          <input
-            type="text"
-            placeholder="Customer Name"
-            className="border p-3 rounded w-full"
-          />
+          {/* Brand */}
+          <div>
+            <label className="text-sm font-semibold text-gray-600 mb-2 block">
+              Brand Name
+            </label>
 
-          <input
-            type="text"
-            placeholder="Phone Model"
-            className="border p-3 rounded w-full"
-          />
+            <div className="flex items-center border rounded-xl px-3">
+              <FaTag className="text-gray-400"/>
+              <input
+                type="text"
+                placeholder="Enter Brand (Samsung, Apple...)"
+                value={brand}
+                onChange={(e)=>setBrand(e.target.value)}
+                required
+                className="p-3 w-full outline-none"
+              />
+            </div>
+          </div>
 
-          <input
-            type="text"
-            placeholder="Customer Phone Number"
-            className="border p-3 rounded w-full"
-          />
+          {/* Model */}
+          <div>
+            <label className="text-sm font-semibold text-gray-600 mb-2 block">
+              Model Name
+            </label>
 
-          <select className="border p-3 rounded w-full">
+            <div className="flex items-center border rounded-xl px-3">
+              <FaMobileAlt className="text-gray-400"/>
+              <input
+                type="text"
+                placeholder="Enter Model (A51, iPhone 13...)"
+                value={model}
+                onChange={(e)=>setModel(e.target.value)}
+                required
+                className="p-3 w-full outline-none"
+              />
+            </div>
+          </div>
 
-            <option>Select Mechanic</option>
-            <option>Ravi</option>
-            <option>Amit</option>
+          {/* Submit */}
+          <button
+            type="submit"
+            className="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold flex justify-center items-center gap-2 transition"
+          >
+            <FaPlus />
+            Add Phone
+          </button>
 
-          </select>
-
-        </div>
-
-
-        <textarea
-          placeholder="Problem Description"
-          className="border p-3 rounded w-full mt-4"
-        />
-
-        <button className="mt-4 bg-blue-600 text-white px-6 py-2 rounded">
-
-          Save Job Card
-
-        </button>
-
-      </div>
-
-
-
-      {/* Job List */}
-
-      <div className="bg-white p-4 md:p-6 rounded shadow overflow-auto">
-
-        <h2 className="text-xl font-bold mb-4">
-
-          All Jobs
-
-        </h2>
-
-        <table className="min-w-full border">
-
-          <thead>
-
-            <tr className="bg-gray-200">
-
-              <th className="p-3 border">Customer</th>
-
-              <th className="p-3 border">Phone</th>
-
-              <th className="p-3 border">Mechanic</th>
-
-              <th className="p-3 border">Status</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            <tr>
-
-              <td className="p-3 border">Rahul</td>
-
-              <td className="p-3 border">Samsung A51</td>
-
-              <td className="p-3 border">Ravi</td>
-
-              <td className="p-3 border text-orange-500">
-
-                Pending
-
-              </td>
-
-            </tr>
-
-          </tbody>
-
-        </table>
+        </form>
 
       </div>
 
@@ -121,4 +127,4 @@ function JobCards() {
 
 }
 
-export default JobCards;
+export default AddPhones; 

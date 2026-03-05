@@ -76,7 +76,7 @@ function Sidebar() {
             onClick={() => setOpen(false)}
             className="text-2xl"
           >
-            ✕
+            
           </button>
         </div>
 
@@ -153,6 +153,31 @@ function Sidebar() {
             </Link>
 
           </li>
+           <li>
+
+            <Link
+              to="/dashboard/addphones"
+              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/addphones")}`}
+              onClick={() => setOpen(false)}
+            >
+              <FaFileInvoice size={18} />
+              AddPhones
+            </Link>
+
+          </li>
+          <li>
+
+            <Link
+              to="/dashboard/mobileparts"
+              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/mobileparts")}`}
+              onClick={() => setOpen(false)}
+            >
+              <FaFileInvoice size={18} />
+              Mobile Parts
+            </Link>
+
+          </li>
+
 
 
 
