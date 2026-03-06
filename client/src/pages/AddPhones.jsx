@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { FaMobileAlt, FaTag, FaPlus } from "react-icons/fa";
+import Headers from "../components/addphones/Headers";
 
 function AddPhones() {
 
@@ -42,7 +43,7 @@ function AddPhones() {
 
     <div className="p-6">
 
-      <div className="bg-white p-6 rounded-2xl shadow border max-w-3xl">
+      <div className="bg-white p-6 rounded-2xl shadow border w-full">
 
         <h1 className="text-2xl font-bold mb-6 flex items-center gap-2">
           <FaMobileAlt />
@@ -111,7 +112,7 @@ function AddPhones() {
           {/* Submit */}
           <button
             type="submit"
-            className="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold flex justify-center items-center gap-2 transition"
+            className="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-2xl font-semibold flex items-center gap-3 w-fit shadow-md hover:shadow-lg transition"
           >
             <FaPlus />
             Add Phone
