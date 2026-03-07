@@ -10,7 +10,7 @@ import Users from "./pages/Users";
 import Invoices from "./pages/Invoices";
 import Settings from "./pages/Settings";
 import Mobileparts from "./pages/Mobileparts";
-import AddPhones from "./pages/AddPhones";
+import PhoneModels from "./pages/PhoneModels";
 
 function Layout() {
 
@@ -20,19 +20,15 @@ function Layout() {
 
       <div className="flex flex-col md:flex-row min-h-screen">
 
-
         {/* Sidebar */}
 
         <Sidebar />
 
-
         <div className="flex flex-col flex-1">
-
 
           {/* Navbar */}
 
           <Navbar />
-
 
           {/* Main Content */}
 
@@ -41,26 +37,26 @@ function Layout() {
             <Routes>
 
               {/* Default Redirect */}
+
               <Route path="/" element={<Navigate to="/dashboard" />} />
 
               <Route path="/dashboard" element={<Dashboard />} />
 
               <Route path="/dashboard/job-cards" element={<JobCards />} />
-              <Route path="/dashboard/addphones" element={<AddPhones />} />
+
+              <Route path="/dashboard/phone-models" element={<PhoneModels />} />
+
+              <Route path="/dashboard/spare-parts" element={<Mobileparts />} />
 
               <Route path="/dashboard/users" element={<Users />} />
 
               <Route path="/dashboard/invoices" element={<Invoices />} />
-
-              
-              <Route path="/dashboard/mobileparts" element={<Mobileparts />} />
 
               <Route path="/dashboard/settings" element={<Settings />} />
 
             </Routes>
 
           </div>
-
 
           {/* Footer */}
 

@@ -7,7 +7,8 @@ import {
   FaUsers,
   FaFileInvoice,
   FaCog,
-  FaMobileAlt
+  FaMobileAlt,
+  FaTools
 } from "react-icons/fa";
 
 function Sidebar() {
@@ -15,12 +16,10 @@ function Sidebar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-
   const activeLink = (path) =>
     location.pathname === path
       ? "bg-white text-black shadow-md border-l-4 border-orange-500"
       : "text-gray-300 hover:text-white hover:bg-white/10 hover:pl-5 hover:border-l-4 hover:border-orange-400 transition-all duration-300";
-
 
   return (
     <>
@@ -31,7 +30,6 @@ function Sidebar() {
         className="md:hidden flex justify-between items-center p-4 text-white"
         style={{ backgroundColor: "var(--sidebar)" }}
       >
-
         <h2 className="text-xl font-bold tracking-wide flex items-center gap-2">
           <FaMobileAlt />
           MobileCare
@@ -43,9 +41,7 @@ function Sidebar() {
         >
           ☰
         </button>
-
       </div>
-
 
       {/* Sidebar */}
 
@@ -63,11 +59,8 @@ function Sidebar() {
           md:translate-x-0
           transition duration-300
         `}
-        style={{
-          backgroundColor: "var(--sidebar)"
-        }}
+        style={{ backgroundColor: "var(--sidebar)" }}
       >
-
 
         {/* Close Mobile */}
 
@@ -76,11 +69,9 @@ function Sidebar() {
             onClick={() => setOpen(false)}
             className="text-2xl"
           >
-            
+            ✕
           </button>
         </div>
-
-
 
         {/* Logo */}
 
@@ -89,115 +80,88 @@ function Sidebar() {
           MobileCare
         </h2>
 
-
-
         {/* Menu */}
 
         <ul className="space-y-3 text-[17px] flex-1">
 
-
           <li>
-
             <Link
               to="/dashboard"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard")}`}
+              className={`flex items-center gap-3 p-3 rounded-lg ${activeLink("/dashboard")}`}
               onClick={() => setOpen(false)}
             >
-              <FaTachometerAlt size={18} />
+              <FaTachometerAlt />
               Dashboard
             </Link>
-
           </li>
 
-
-
           <li>
-
             <Link
               to="/dashboard/job-cards"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/job-cards")}`}
+              className={`flex items-center gap-3 p-3 rounded-lg ${activeLink("/dashboard/job-cards")}`}
               onClick={() => setOpen(false)}
             >
-              <FaClipboardList size={18} />
+              <FaClipboardList />
               Job Cards
             </Link>
-
           </li>
 
-
+          <li>
+            <Link
+              to="/dashboard/phone-models"
+              className={`flex items-center gap-3 p-3 rounded-lg ${activeLink("/dashboard/phone-models")}`}
+              onClick={() => setOpen(false)}
+            >
+              <FaMobileAlt />
+              Phone Models
+            </Link>
+          </li>
 
           <li>
+            <Link
+              to="/dashboard/spare-parts"
+              className={`flex items-center gap-3 p-3 rounded-lg ${activeLink("/dashboard/spare-parts")}`}
+              onClick={() => setOpen(false)}
+            >
+              <FaTools />
+              Spare Parts
+            </Link>
+          </li>
 
+          <li>
             <Link
               to="/dashboard/users"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/users")}`}
+              className={`flex items-center gap-3 p-3 rounded-lg ${activeLink("/dashboard/users")}`}
               onClick={() => setOpen(false)}
             >
-              <FaUsers size={18} />
+              <FaUsers />
               Users
             </Link>
-
           </li>
 
-
-
           <li>
-
             <Link
               to="/dashboard/invoices"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/invoices")}`}
+              className={`flex items-center gap-3 p-3 rounded-lg ${activeLink("/dashboard/invoices")}`}
               onClick={() => setOpen(false)}
             >
-              <FaFileInvoice size={18} />
+              <FaFileInvoice />
               Invoices
             </Link>
-
           </li>
-           <li>
-
-            <Link
-              to="/dashboard/addphones"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/addphones")}`}
-              onClick={() => setOpen(false)}
-            >
-              <FaFileInvoice size={18} />
-              AddPhones
-            </Link>
-
-          </li>
-          <li>
-
-            <Link
-              to="/dashboard/mobileparts"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/mobileparts")}`}
-              onClick={() => setOpen(false)}
-            >
-              <FaFileInvoice size={18} />
-              Mobile Parts
-            </Link>
-
-          </li>
-
-
-
 
           <li>
-
             <Link
               to="/dashboard/settings"
-              className={`flex items-center gap-3 p-3 rounded-lg transition ${activeLink("/dashboard/settings")}`}
+              className={`flex items-center gap-3 p-3 rounded-lg ${activeLink("/dashboard/settings")}`}
               onClick={() => setOpen(false)}
             >
-              <FaCog size={18} />
+              <FaCog />
               Settings
             </Link>
-
           </li>
 
-
         </ul>
-
-
 
         {/* Bottom */}
 
@@ -205,20 +169,15 @@ function Sidebar() {
           © 2026 MobileCare
         </div>
 
-
       </div>
-
-
 
       {/* Overlay */}
 
       {open && (
-
         <div
           onClick={() => setOpen(false)}
           className="fixed inset-0 bg-black opacity-40 md:hidden"
         ></div>
-
       )}
 
     </>
