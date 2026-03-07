@@ -24,40 +24,34 @@ const API = "https://mobile-repair-apis.onrender.com/api/phones";
 ///////////////////////////
 
 const fetchPhones = async () => {
+  try {
 
-try {
+    const brandsRes = await axios.get(`${API}/all-brands`);
+    const brands = brandsRes.data.data;
 
-const brandsRes = await axios.get(`${API}/all-brands`);
+    let allPhones = [];
 
-const brands = brandsRes.data.data;
+    for (const b of brands) {
 
-let allPhones = [];
+      const modelsRes = await axios.get(`${API}/models/${b.brand}`);
 
-for (const b of brands) {
+      const models = modelsRes.data.data;   // ✅ fix here
 
-const modelsRes = await axios.get(`${API}/models/${b.brand}`);
+      const formatted = models.map((m) => ({
+        brand: b.brand,
+        model: m.model,
+        type: m.type
+      }));
 
-const models = modelsRes.data.data.models;
+      allPhones = [...allPhones, ...formatted];
+    }
 
-const formatted = models.map((m)=>({
-brand: b.brand,
-model: m.model,
-type: m.type
-}));
+    setPhones(allPhones);
 
-allPhones = [...allPhones,...formatted];
-
-}
-
-setPhones(allPhones);
-
-} catch (err) {
-
-console.error(err);
-alert("Failed to load phones");
-
-}
-
+  } catch (err) {
+    console.error(err);
+    alert("Failed to load phones");
+  }
 };
 
 useEffect(()=>{
