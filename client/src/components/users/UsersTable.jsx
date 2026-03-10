@@ -6,32 +6,44 @@ FaEdit,
 FaTrash
 } from "react-icons/fa";
 
-function UsersTable({filteredUsers,editUser,deleteUser}){
+function UsersTable({ filteredUsers, editUser, deleteUser }) {
 
-return(
+return (
 
-<div className="bg-white p-4 md:p-6 rounded-2xl shadow border overflow-x-auto">
+<div className="space-y-6">
 
-<h2 className="text-lg md:text-xl font-semibold mb-4 flex gap-2 items-center">
+{/* HEADER */}
 
-<FaUsers/>
+<div className="flex items-center gap-3">
 
-All Users
+<div className="bg-orange-100 p-2 rounded-lg">
+<FaUsers className="text-orange-500"/>
+</div>
 
+<h2 className="text-2xl font-bold text-gray-700">
+Users Management
 </h2>
 
+</div>
 
-<table className="min-w-[700px] w-full">
 
-<thead className="border-b text-gray-500 text-sm">
+{/* TABLE CARD */}
+
+<div className="bg-white rounded-2xl shadow-md border overflow-hidden">
+
+<div className="overflow-x-auto">
+
+<table className="w-full text-sm">
+
+<thead className="bg-gray-100 text-gray-600">
 
 <tr>
 
-<th className="p-3 md:p-4 text-left">User</th>
-<th className="p-3 md:p-4 text-left">Email</th>
-<th className="p-3 md:p-4 text-left">Phone</th>
-<th className="p-3 md:p-4 text-left">Role</th>
-<th className="p-3 md:p-4 text-left">Actions</th>
+<th className="p-4 text-left">User</th>
+<th className="p-4 text-left">Email</th>
+<th className="p-4 text-left">Phone</th>
+<th className="p-4 text-left">Role</th>
+<th className="p-4 text-left">Actions</th>
 
 </tr>
 
@@ -48,53 +60,59 @@ className="border-b hover:bg-gray-50 transition"
 >
 
 
-<td className="p-3 md:p-4 flex items-center gap-3">
+{/* USER */}
 
+<td className="p-4 flex items-center gap-3">
 
-<div className="w-9 h-9 md:w-11 md:h-11 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">
+<div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">
 
 {user.name.charAt(0)}
 
 </div>
 
+<div>
 
-<p className="font-semibold">
-
+<p className="font-semibold text-gray-700">
 {user.name}
-
 </p>
 
+</div>
 
 </td>
 
 
+{/* EMAIL */}
 
-<td className="p-3 md:p-4 text-gray-600">
+<td className="p-4 text-gray-600">
 
 {user.email}
 
 </td>
 
 
+{/* PHONE */}
 
-<td className="p-3 md:p-4">
+<td className="p-4 text-gray-700">
 
 {user.phone}
 
 </td>
 
 
+{/* ROLE */}
 
-<td className="p-3 md:p-4">
+<td className="p-4">
 
-<span className={`px-3 py-1 rounded-full text-xs md:text-sm flex gap-2 items-center w-fit
+<span
+className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2 w-fit
 ${user.role==="Admin"
-?"bg-orange-100 text-orange-700"
-:"bg-green-100 text-green-700"}
-`}>
+? "bg-orange-100 text-orange-700"
+: "bg-green-100 text-green-700"}
+`}
+>
 
-{user.role==="Admin" && <FaUserShield/>}
-{user.role==="Mechanic" && <FaUserCog/>}
+{user.role==="Admin" && <FaUserShield />}
+{user.role==="Mechanic" && <FaUserCog />}
 
 {user.role}
 
@@ -103,12 +121,13 @@ ${user.role==="Admin"
 </td>
 
 
+{/* ACTIONS */}
 
-<td className="p-3 md:p-4 flex gap-4">
+<td className="p-4 flex gap-3">
 
 <button
 onClick={()=>editUser(index)}
-className="text-blue-500 hover:scale-110 transition"
+className="bg-blue-50 hover:bg-blue-100 text-blue-600 p-2 rounded-lg transition"
 >
 
 <FaEdit/>
@@ -116,16 +135,14 @@ className="text-blue-500 hover:scale-110 transition"
 </button>
 
 
-
 <button
 onClick={()=>deleteUser(index)}
-className="text-red-500 hover:scale-110 transition"
+className="bg-red-50 hover:bg-red-100 text-red-600 p-2 rounded-lg transition"
 >
 
 <FaTrash/>
 
 </button>
-
 
 </td>
 
@@ -140,8 +157,12 @@ className="text-red-500 hover:scale-110 transition"
 
 </div>
 
+</div>
+
+</div>
+
 )
 
 }
 
-export default UsersTable
+export default UsersTable;
